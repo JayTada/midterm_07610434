@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
-  final _controller = TextEditingController();
+  final _controllerLength = TextEditingController();
+  final _controllerGirth = TextEditingController();
+  final fieldText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,32 +41,137 @@ class MyHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(width: 8.0),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('      PIG WEIGHT',
+                                      style: TextStyle(
+                                          fontSize: 36.0, color: Colors.pink.withOpacity(1))),
+                                  Text(
+                                    '     CALCULATOR',
+                                    style: TextStyle(
+                                      fontSize: 36.0,
+                                      color: Colors.pink.withOpacity(1),
+                                    ),
+                                  ),
+                                  Image.asset('images/pig.png', width: 280,),
+                                ],
+                              ),
+                            ])
+                    ),
+                    Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const SizedBox(width: 8.0),
-                          Column(
+                          Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('      PIG WEIGHT',
-                                  style: TextStyle(
-                                      fontSize: 36.0, color: Colors.pinkAccent.withOpacity(1))),
-                              Text(
-                                '     CALCULATOR',
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.pinkAccent.withOpacity(1),
+                              Card(
+                                elevation: 50,
+                                child: SizedBox(
+                                  width: 300,
+                                  height: 200,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child:Column(
+                                      children: [
+                                        const Text(
+                                          'LENGTH',
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                          ),
+                                        ),
+                                        const Text(
+                                          '(cm)',
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                          child: TextField(
+                                            textAlign: TextAlign.center,
+                                            controller: _controllerLength,
+                                            decoration: const InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.white,
+                                              border: OutlineInputBorder(),
+                                              hintText: 'Enter girth',
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-                              Image.asset('images/pig.png', width: 280,),
+                              Card(
+                                elevation: 50,
+                                child: SizedBox(
+                                  width: 300,
+                                  height: 200,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child:Column(
+                                      children: [
+                                        const Text(
+                                          'GIRTH',
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                          ),
+                                        ),
+                                        const Text(
+                                          '(cm)',
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                          child: TextField(
+                                            textAlign: TextAlign.center,
+                                            controller: _controllerGirth,
+                                            decoration: const InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.white,
+                                              border: OutlineInputBorder(),
+                                              hintText: 'Enter girth',
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ],
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: ElevatedButton(
+                        child: const Text('CALCULATE'),
+                        onPressed: () {
+                          var inputLength = _controllerLength.text;
+                          var inputGirth = _controllerGirth.text;
+
+
+                        },
+                      ),
+                    )
                   ],
+
                 )
             )
         )
