@@ -203,7 +203,13 @@ class MyHomePage extends StatelessWidget {
                                 barrierDismissible: false,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title : const Text('RESULT',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                                    title :Row(
+                                        children:const [
+                                          Image(image: AssetImage('images/ic_pig.png'),width: 40,),
+                                          Text('RESULT',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold))
+                                        ]
+
+                                    ),
                                     content :Text( 'Weight: $weightMinusInt - $weightPlusInt kg \n Price: $priceMinusInt - $pricePlusInt Baht'),
 
                                     actions: [
