@@ -78,7 +78,7 @@ class MyHomePage extends StatelessWidget {
                               Card(
                                 elevation: 50,
                                 child: SizedBox(
-                                  width: 300,
+                                  width: MediaQuery.of(context).size.width * 0.45,
                                   height: 200,
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
@@ -105,7 +105,7 @@ class MyHomePage extends StatelessWidget {
                                               filled: true,
                                               fillColor: Colors.white,
                                               border: OutlineInputBorder(),
-                                              hintText: 'Enter girth',
+                                              hintText: 'Enter length',
                                             ),
                                           ),
                                         ),
@@ -117,7 +117,7 @@ class MyHomePage extends StatelessWidget {
                               Card(
                                 elevation: 50,
                                 child: SizedBox(
-                                  width: 300,
+                                  width: MediaQuery.of(context).size.width * 0.45,
                                   height: 200,
                                   child: Padding(
                                     padding: const EdgeInsets.all(20.0),
