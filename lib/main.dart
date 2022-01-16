@@ -50,11 +50,11 @@ class MyHomePage extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('      PIG WEIGHT',
+                                  Text('        PIG WEIGHT',
                                       style: TextStyle(
                                           fontSize: 36.0, color: Colors.pink.withOpacity(1))),
                                   Text(
-                                    '     CALCULATOR',
+                                    '      CALCULATOR',
                                     style: TextStyle(
                                       fontSize: 36.0,
                                       color: Colors.pink.withOpacity(1),
@@ -166,7 +166,56 @@ class MyHomePage extends StatelessWidget {
                           var inputLength = _controllerLength.text;
                           var inputGirth = _controllerGirth.text;
 
+                          var length =  double.tryParse(inputLength);
+                          var girth =  double.tryParse(inputGirth);
 
+                          if(length == null || girth == null){
+                            print(
+                                "กรอกข้อมูลไม่ถูกต้อง ให้กรอกเฉพาะตัวเลขเท่านั้น");
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title : const Text('ERROR',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                                    content :const Text( 'Invalid input'),
+                                    actions: [
+                                      ElevatedButton
+                                        (onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                          child: const Text('OK'))
+                                    ],
+                                  );
+                                });
+                          }else{
+                            var weight = girth/100 * girth/100 * length/100 * 69.3;
+                            var weightPlus = weight * 1.03;
+                            var weightPlusInt = weightPlus.round();
+                            var weightMinus = weight * 0.97;
+                            var weightMinusInt = weightMinus.round();
+                            var pricePlus = weightPlus * 112.5;
+                            var pricePlusInt = pricePlus.round();
+                            var priceMinus = weightMinus * 112.5;
+                            var priceMinusInt = priceMinus.round();
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title : const Text('RESULT',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                                    content :Text( 'Weight: $weightMinusInt - $weightPlusInt kg \n Price: $priceMinusInt - $pricePlusInt Baht'),
+
+                                    actions: [
+                                      ElevatedButton
+                                        (onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                          child: const Text('OK'))
+                                    ],
+                                  );
+                                });
+                          }
                         },
                       ),
                     )
